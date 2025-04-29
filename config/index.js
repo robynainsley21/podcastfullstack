@@ -1,0 +1,17 @@
+import { createPool } from 'mysql2';
+
+import "dotenv/config";
+
+let connection = createPool({
+    host: process.env.hostDb,
+    user: process.env.userDb,
+    password: process.env.pwdDb,
+    database: process.env.dbName
+})
+
+connection.on('connection', (pool) => {
+    if(!pool) throw new Error('Database is not connected');
+    console.log('Database is connected');
+})
+
+export { connection }
