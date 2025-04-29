@@ -1,6 +1,5 @@
 import { express, userRouter } from "./controller/UserController.js";
 import path from "path";
-import { productRouter } from "./controller/ProductController.js";
 
 /**Creating the express app */
 const app = express();
@@ -20,10 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./static"));
 
-
 /**Routes */
 app.use("/users", userRouter);
-app.use("/products", productRouter);
 
 /**Endpoint*/
 app.get("^/$|/Podcasting", (req, res) => {
