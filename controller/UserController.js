@@ -11,7 +11,7 @@ userRouter.get("/", (req, res) => {
   Users.fetchUsers(req, res);
 });
 
-userRouter.get("/:id", (req, res) => {
+userRouter.get("/:userID", (req, res) => {
   Users.fetchUser(req, res);
 });
 
@@ -19,11 +19,11 @@ userRouter.post("/register", (req, res) => {
   Users.registerUser(req, res);
 });
 
-userRouter.patch("/update/:id", (req, res) => {
+userRouter.patch("/update/:userID", (req, res) => {
   Users.updateUser(req, res);
 });
 
-userRouter.delete("/delete/:id", (req, res) => {
+userRouter.delete("/delete/:userID", (req, res) => {
   Users.deleteUser(req, res);
 });
 
