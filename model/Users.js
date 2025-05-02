@@ -7,7 +7,7 @@ class Users {
     try {
       const strQry = `
                 SELECT * FROM Users
-                WHERE userID = ${req.params.id};
+                WHERE userID = ${req.params.userID};
             `;
 
       db.query(strQry, (err, result) => {
@@ -92,7 +92,7 @@ class Users {
       const strQry = `
                   UPDATE Users
                   SET ?
-                  WHERE userID = ${req.params.id};
+                  WHERE userID = ${req.params.userID};
                 `;
 
       db.query(strQry, [data], (err) => {
@@ -111,7 +111,7 @@ class Users {
     try {
       const strQry = `
                   DELETE FROM Users
-                  WHERE userID = ${req.params.id};
+                  WHERE userID = ${req.params.userID};
                 `;
       db.query(strQry, (err) => {
         if (err)
@@ -134,7 +134,7 @@ class Users {
                   FROM Users
                   WHERE emailAdd = '${emailAdd}';
                 `;
-      db.query(strQry, async (err, result) => {
+      db.query(strQry, [emailAdd], async (err, result) => {
         if (err) throw new Error(`To login, please review your query.`);
         if (!result?.length) {
           res.json({
